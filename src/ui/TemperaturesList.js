@@ -10,8 +10,8 @@ export class TemperatureList {
         const arrayData = dataObj.dataObjects;
         this.#cityOutputElem.innerHTML = `${dataObj.city}`;
        console.log(arrayData);
-       this.#listOutputElem.innerHTML = `${arrayData}`;
-       // this.#listOutputElem.innerHTML = this.getTemperaturAndHour(arrayData);
+      // this.#listOutputElem.innerHTML = `${}`;
+        this.#listOutputElem.innerHTML = this.getTemperaturAndHour(arrayData);
         console.log(this.getTemperaturAndHour(arrayData));
     }
     getTemperaturAndHour(array) {
