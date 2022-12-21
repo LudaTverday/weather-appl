@@ -2,7 +2,6 @@ import { DataForm } from "./ui/DataForm.js";
 import { WeatherDataProcessor } from "./data/WeatherDataProcessor.js";
 import { TemperatureList } from "./ui/TemperaturesList.js";
 
-//const params ={/*required params for form*/};
 const weatherProcessor = new WeatherDataProcessor();
 
 
@@ -13,9 +12,9 @@ idHourTo: "hourTo", idErrorMessage: "error-message" });
 const temperatureList = new TemperatureList ({idLIst: "list-output",idCity: "city-output" });
 dataForm.addHandler((dataFromForm) => {
    const promiseData = weatherProcessor.getData(dataFromForm);
-    //console.log(promiseData);
-  // promiseData.then(data => temperatureList.showTemperatures(data));
-   temperatureList.showTemperatures(promiseData);
+    console.log(promiseData);
+  promiseData.then(data => temperatureList.showTemperatures(data,dataFromForm));
+  // temperatureList.showTemperatures(promiseData);
 })
 
 

@@ -1,0 +1,98 @@
+@font-face {
+    font-family: stayClassy;
+    src: url("fonts/Stay\ Classy\ SLDT.otf");
+}
+@font-face {
+    font-family: roger;
+    src: url("fonts/ROGERS.ttf");
+}
+@font-face {
+    font-family: centabel;
+    src: url("fonts/centabel.ttf");
+}
+html{
+    height:100%;
+}
+body{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+    height: 90vh;
+    background-image: linear-gradient(92.7deg, rgb(245, 212, 212) 8.5%, rgb(252, 251, 224) 90.2%);
+}
+.form-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    height: 40vh;
+    width: 35vw;
+    border-style: solid;
+    border-radius: 15%;
+    background-image: radial-gradient(circle at 92.3% 71.5%, rgb(83, 138, 214) 0%, rgb(134, 231, 214) 90%);
+}
+#form-data{
+    height: 40vh;
+    width: 30vw;
+  display:flex;
+  flex-direction: column; 
+  justify-content: space-evenly;
+  
+}
+.input-date-hours{
+    height:25vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.input-city{
+    height: 5vh;
+}
+.days-input, .hours-input, .input-city{
+    display:flex;
+    flex-direction:column;
+    
+}
+.buttons{
+    text-align: center;
+}
+label{
+    font-size: 1.15em;
+}
+input, select,button{
+    font-size: 1.05em;
+}
+#output-weather{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:15vw;
+    height:60vh;
+    margin-right: 10vh;
+   
+
+}
+#list-output{
+    height: 70vh;
+    display:flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width:15vw;
+
+}
+#city-output{
+    font-family: roger;
+    font-size: 2em;
+    margin-bottom: 3vh;
+}
+.dataList{
+    width: 10vw;
+    border-style: solid;
+    border-radius: 15%;
+    background-image: linear-gradient(109.6deg, rgb(223, 234, 247) 11.2%, rgb(244, 248, 252) 91.1%);
+    font-family: centabel;
+   
+}
+#error-message{
+    color: red;
+}

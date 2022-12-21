@@ -7,13 +7,11 @@ export class WeatherDataProcessor {
         { city: "Netanya", latitude: 32.3215, longitude: 34.8532 }]
     }
     getData(requestObject) {
-        //{city, dayFrom, dayTo, hourFrom, hourTo}
         const url = this.getUrl(requestObject);
         const promiseResponse = fetch(url);
         return this.processData(promiseResponse.then(response => response.json()), requestObject);
     }
     getUrl(requestObj) {
-        //TODO creates url for request and returrns one
         const city = requestObj.city;
         const i = this.#cityGeoCodes.reduce((res, object, index) => {
             if (object.city === city) {
@@ -29,68 +27,19 @@ export class WeatherDataProcessor {
     processData(promiseData, requestObject) {
         const hourFromForm = requestObject.hourFrom;
         const hourToForm = requestObject.hourTo;
-        const objects = [];
-    //     promiseData.then(data =>            
-    //        objects = data.hourly.time.reduce((res, cur, index) => {
-    //             let hour = cur.slice(-5, -3);
-    //             if (+hour >= hourFromForm && +hour <= hourToForm) {
-    //                 res.push({
-    //                     date: cur.slice(0, 10),
-    //                     hour: cur.slice(-5), 
-    //                     temperature: data.hourly.temperature_2m[index]
-    //                 })
-    //             }
-    //         },[]
-    //         ) //return {city, objects:[{data, hour, temperature},...] }
-    // )    
-        promiseData.then(data =>            
-            data.hourly.time.forEach((cur, index) => {
-                let hour = cur.slice(-5, -3);
-                if (+hour >= hourFromForm && +hour <= hourToForm) {
-                    objects.push({
-                        date: cur.slice(0, 10),
-                        hour: cur.slice(-5), 
-                        temperature: data.hourly.temperature_2m[index]
-                    })
-                }
-            }
-            ) //return {city, objects:[{data, hour, temperature},...] }
-    )
-        console.log(objects);
-        objects.forEach(cur => console.log(cur));
-        return { city: requestObject.city, dataObjects: objects }
+     const promDataAr =  promiseData.then(data =>            
+        data.hourly.time.map((cur, index) => {            
+              return {
+                    date: cur.slice(0, 10),
+                    hour: cur.slice(-5), 
+                    temperature: data.hourly.temperature_2m[index]
+                }            
+        }))
+       return promDataAr.then(data => data.filter(cur => {
+                let hour = +cur.hour.slice(0,2);
+                return hour >=hourFromForm && hour<=hourToForm
+            }))
         
-    }
 }
 
 
-/*
-        
-    }
-}
-promiseData.hourly[time].forEach((cur, index) => {
-             objects.push ({data: cur.slice(9),
-            hour: cur.slice(-4), temperature: data.temperature_2m[index]})
-        })
-        
-        //return {city, objects:[{data, hour, temperature},...] }
-
-const hourFromForm = requestObject.hourFrom;
-       console.log(hourFromForm);
-       const hourToForm = requestObject.hourTo;
-       const arrayHoursTemperature = promiseData.then(data => {
-       return data.hourly.time.reduce((res, cur, ind) => {
-            let hour = cur.slice(-5);
-            if(+hour>=hourFromForm&&+hour<=hourToForm){
-                res.push({date: cur.slice(0,10),
-                    hour: hour, temperature: data.hourly.temperature_2m[ind]})              
-
-            }
-            
-           //return {city, objects:[{data, hour, temperature},...] }
-       console.log(res);
-        } , [])  
-
-    } )
-    return {city:requestObject.city, objects: arrayHoursTemperature}
-    */
