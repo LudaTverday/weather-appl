@@ -7,6 +7,44 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="form-wrapper">
+        <form id="form-data">
+            <select name="city" required>
+                <option value hidden selected disabled>
+                    ---select City---
+                </option>
+                <option id="option" value="Ashdod">Ashdod</option>
+                <option id="option" value="Eilat">Eilat</option>
+                <option id="option" value="Haifa">Haifa</option>
+                <option id="option" value="Jerusalem">Jerusalem</option>
+                <option id="option" value="Netanya">Netanya</option>
+                <option id="option" value="Tel Aviv-Yafo">Tel Aviv-Yafo</option>
+            </select>
+            <div class="input-date-hours">
+                <div class="days-input">
+                    <label for="dayFrom">From day:</label>
+                    <input type="date" min="2022-12-19" max="2022-12-31" name="dayFrom" id="dayFrom" required>
+                    <label for="dayTo">To day:</label>
+                    <input type="date"min="2022-12-19" max="2022-12-31" name="dayTo" id="dayTo" required>
+                </div>
+                <div class="hours-input">
+                    <label for="dayFrom">From hour:</label>
+                    <input type="number"  name="hourFrom" placeholder="from hour" id="hourFrom" required>
+                    <label for="dayTo">To hour:</label>
+                    <input type="number" name="hourTo" placeholder="to hour" id="hourTo" required>
+                </div>
+            </div>            
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>  
+            </div>             
+        </form>
+        <spam id="error-message"></spam>
+    </div>
+    <div id="output-weather">
+        <p id="city-output"></p>
+        <div id="list-output"></div>
+    </div>
     <script src="src/main.js" type="module"></script>
 </body>
 </html>
