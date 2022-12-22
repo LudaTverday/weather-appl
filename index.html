@@ -12,24 +12,19 @@
         <form id="form-data">
             <div class="input-city">
                 <label for="city">Select city:</label>
-                <select name="city" required>
-                    <option value hidden selected disabled>
+                <select id="city" name="city" required>
+                    <option  value hidden selected disabled>
                         ---City---
                     </option>
-                    <option id="option" value="Ashdod">Ashdod</option>
-                    <option id="option" value="Eilat">Eilat</option>
-                    <option id="option" value="Haifa">Haifa</option>
-                    <option id="option" value="Jerusalem">Jerusalem</option>
-                    <option id="option" value="Netanya">Netanya</option>
-                    <option id="option" value="Tel Aviv-Yafo">Tel Aviv-Yafo</option>
+                    
                 </select>
             </div>            
             <div class="input-date-hours">
                 <div class="days-input">
                     <label for="dayFrom">From day:</label>
-                    <input type="date" min="2022-12-19" max="2022-12-31" name="dayFrom" id="dayFrom" required>
+                    <input type="date" name="dayFrom" id="dayFrom" required>
                     <label for="dayTo">To day:</label>
-                    <input type="date"min="2022-12-19" max="2022-12-31" name="dayTo" id="dayTo" required>
+                    <input type="date" name="dayTo" id="dayTo" required>
                 </div>
                 <div class="hours-input">
                     <label for="dayFrom">From hour:</label>
